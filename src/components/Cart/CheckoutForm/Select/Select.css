@@ -1,0 +1,16 @@
+.div-error {
+  color: red;
+}
+
+.label-checkout,
+.input-checkout {
+  border-radius: 5px;
+  padding: 0.5%;
+  margin: 0.5%;
+  font-weight: bold;
+  font-size: x-large;
+}
+.label-checkout {
+  background-color: rgb(223, 195, 158);
+  color: rgb(51, 36, 16);
+}

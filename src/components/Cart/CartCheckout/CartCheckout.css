@@ -1,0 +1,46 @@
+.drop-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.589);
+  z-index: 10;
+}
+.div-CartCheckout {
+  position: fixed;
+  background-color: beige;
+  top: 5%;
+  left: 25%;
+  width: 50%;
+  max-height: 90%;
+  min-height: 30%;
+  border-radius: 25px;
+  z-index: 20;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.div-alert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-order {
+  border-radius: 10px;
+  padding: 2%;
+  margin: 2%;
+  font-size: xx-large;
+}
+
+.alert-success {
+  font-size: 3rem;
+  color: salmon;
+  font-weight: bold;
+  border: 2px solid sienna;
+  text-align: center;
+}

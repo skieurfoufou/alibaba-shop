@@ -1,0 +1,15 @@
+.cart-container {
+  background-color: rgb(245, 199, 130);
+  min-width: 25%;
+}
+
+.button-checkout,
+.button-order {
+  background-color: rgb(248, 181, 79);
+  color: brown;
+  font-size: 30px;
+  border-radius: 35px;
+  margin: 10px;
+  padding: 10px;
+  align-items: center;
+}

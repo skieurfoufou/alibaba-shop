@@ -1,0 +1,15 @@
+.div-CartOrder {
+  position: fixed;
+  top: 5%;
+  left: 25%;
+  background-color: beige;
+  width: 50%;
+  height: 90%;
+  border-radius: 25px;
+  z-index: 20;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
