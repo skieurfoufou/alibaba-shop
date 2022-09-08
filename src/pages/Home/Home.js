@@ -4,22 +4,22 @@ import Header from "../../components/Header/Header";
 import Products from "../../components/Products/Products";
 import Cart from "../../components/Cart/Cart";
 import CartContext from "../../contexts/CartContext";
-import products from "../../data/products";
+// import products from "../../data/products";
 
 function Home({ onRemoveProduct, cartItems }) {
-  const [initProductsList, setInitProductsList] = useState(products);
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [initProductsList, setInitProductsList] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // useEffect(() => {
-  //   async function fetchProducts() {
-  //     const res = await fetch("https://fakestoreapi.com/products/");
-  //     const data = await res.jason();
-  //     setInitProductsList(data);
-  //     setFilterProducts(data);
-  //   }
-  //   fetchProducts();
-  // }, []);
+  useEffect(() => {
+    async function fetchProducts() {
+      const res = await fetch("https://fakestoreapi.com/products/");
+      const data = await res.json();
+      setInitProductsList(data);
+      setFilteredProducts(data);
+    }
+    fetchProducts();
+  }, []);
 
   function filterProducts(e) {
     if (e.target.value === "all") {
@@ -27,6 +27,43 @@ function Home({ onRemoveProduct, cartItems }) {
     } else {
       const newProducts = initProductsList.filter(
         (value) => value.category === e.target.value
+      );
+      setFilteredProducts(newProducts);
+    }
+  }
+
+  function sortedProducts(e) {
+    if (e.target.value === "low-to-high") {
+      const newProducts = initProductsList.sort((a, b) =>
+        a.price !== b.price ? (a.price < b.price ? -1 : 1) : 0
+      );
+      setFilteredProducts(newProducts);
+    }
+    if (e.target.value === "high-to-low") {
+      const newProducts = initProductsList.sort((a, b) =>
+        a.price !== b.price ? (a.price > b.price ? -1 : 1) : 0
+      );
+      setFilteredProducts(newProducts);
+    }
+    if (e.target.value === "a-z") {
+      const newProducts = initProductsList.sort((a, b) =>
+        a.title !== b.title ? (a.title < b.title ? -1 : 1) : 0
+      );
+      setFilteredProducts(newProducts);
+    }
+    if (e.target.value === "z-a") {
+      const newProducts = initProductsList.sort((a, b) =>
+        a.title !== b.title ? (a.title > b.title ? -1 : 1) : 0
+      );
+      setFilteredProducts(newProducts);
+    }
+    if (e.target.value === "rating") {
+      const newProducts = initProductsList.sort((a, b) =>
+        a.rating.rate !== b.rating.rate
+          ? a.rating.rate > b.rating.rate
+            ? -1
+            : 1
+          : 0
       );
       setFilteredProducts(newProducts);
     }
@@ -52,6 +89,7 @@ function Home({ onRemoveProduct, cartItems }) {
       <Header
         products={initProductsList}
         onChangeFilter={filterProducts}
+        onChangeSorter={sortedProducts}
         onCartClick={onCartClick}
         itemsCounter={calculateTotalCartQuantity()}
       />
